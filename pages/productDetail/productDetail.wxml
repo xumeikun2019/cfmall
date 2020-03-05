@@ -1,0 +1,132 @@
+<!--商品幻灯片-->
+<wxs src="../../app.wxs" module="app" />
+
+<view class='home'>
+  <view class='banner'>
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" class="banner" duration="{{duration}}" circular="{{duration}}">
+      <block wx:for="{{goods_img}}">
+        <swiper-item>
+          <image src="{{item}}" class="slide-image" mode="aspectFill" data-src='{{item.img}}' bindtap="previewImage" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!--商品幻灯片 end-->
+  <view class="content">
+    <view class="info-price clear">
+      <view class='price'>￥{{app.getPriceBig(price1)}} </view>
+      <view class='pricesmall'>.{{app.getPriceSmall(price1)}} </view>
+      <view class='price2'>￥{{price2}} </view>
+
+      <view class='fenxiang'>
+        <button class='fxbtn' open-type="share">
+          <view style='height:20px;width:30px;margin-top:8px;'>
+            <image src='../../images/share.png' mode="aspectFill"></image>
+          </view>
+          <view>分享</view>
+        </button>
+      </view>
+    </view>
+    <view class="info-title">
+      <text>{{prodtitle}}</text>
+    </view>
+
+    <view style="border-top:1px solid #F6F6F6;background: #fff; padding:5px 15px;">
+      <view class="clearfix flex grey gridXt" style='font-size:16px'>
+        <!-- <text class="sub"><block wx:if='{{goods_info.goods_yunfei==0.00}}'>运费：包邮</block><block wx:else>运费：{{goods_info.goods_yunfei}}</block></text> -->
+        <text class="sub">库存：{{stock}}
+      </text>
+
+
+        <text class="sub">销量：{{salesvolume}}</text>
+      </view>
+    </view>
+  </view>
+  <!-- <block wx:if="{{pjDataList!=''}}">
+ 
+  <view class='pj_box'>
+    <view style="height:40px;line-height: 40px;border-bottom:1px solid #f5f5f5;">
+     <view style='float:left;'>商品评价</view>
+     <view style='float:right;margin-left:2px;margin-top:-1px;'>
+        <image src="" class="ico_img_jt"></image>
+     </view>
+     <view style='float:right;font-size:12px;color:#A2A2A2;'>
+        <navigator url="pjList?id={{goods_id}}">查看全部</navigator>
+     </view>
+     <view class='clear'></view>
+    </view>
+    <block wx:for="{{pjDataList}}" wx:for-item="item" wx:key="pj">
+      <view class="list_item">
+        <view class='pj_u_info clear'>
+          <view class='header_img'><image src="{{item.headpic}}" mode="aspectFit"></image></view>
+          <view class='name'>{{item.author}}</view>
+          <view class='time'>{{item.add_time}}</view>
+        </view>
+        <view class='pj_cont'>
+          {{item.content}}
+        </view>
+      </view>
+    </block>
+</view>
+</block> -->
+  <!--商品详情-->
+  <view class='details_box'>
+    <view style="height:40px;line-height:40px;text-align:center">
+      <view>——商品详情——</view>
+    </view>
+    <view style='padding:5px 0px;' wx:for="{{detail_img}}">
+
+      <image src="{{item}}" class="detail_img" mode="aspectFill" />
+
+
+    </view>
+  </view>
+
+<view class="drawer_screen" bindtap="buy" data-status="0" wx:if="{{showModalStatus}}"></view>
+<view animation="{{animationData}}" class="drawer_attr_box" wx:if="{{showModalStatus}}">
+<view class="close_icon" bindtap="buy" data-status="0">×</view>
+  <view class="drawer_attr_content">
+    <view class="text_center">
+         <image class="drawer_image" src="{{imgurl}}{{app.getTags(imgurl1)}}" ></image>
+         <view class="mingcheng">
+             <view>{{prodtitle}}</view>
+             <view style="font-size:29rpx;color:red">¥{{price2}}</view>
+             <view  style="font-size:26rpx;color:#ccc">库存：{{stock}}</view>
+         </view>
+    </view>
+   
+    <view class="shu"> 
+        <text class="cun">购买数量</text>
+       <view class="dian">
+        <view class="stepper">
+
+       <!-- 减号 -->
+       <text class="{{minusStatuses[index]}}" data-alpha-beta="0" bindtap="changeNum">-</text>
+       <!-- 数值 -->
+       <view class="nownum">{{amount}}</view>
+       <!-- 加号 -->
+       <text class="normal" data-alpha-beta="1" bindtap="changeNum">+</text>
+      </view>
+      </view>
+   </view>
+   <view class="footc" bindtap="addShopCart" data-type="buynow"  data-status="{{status}}">
+{{buys}}
+</view>
+  </view>
+</view>
+
+  <!--底部浮动 start-->
+  <view class="foot-nav mt15">
+    <view class="flex con gridXt tc">
+      <view class="add-cart sub f16">
+      <button class="add-cart-btn" bindtap='buy'>加入购物车</button>
+    </view>
+     <!--<view class="add-cart sub f16">
+      <button class="add-cart-btn" bindtap='buy'>立即购买</button>
+    </view> -->
+      <view class="add-cart sub f16">
+        <button class="add-cart-btn" bindtap='callus'>联系购买</button>
+      </view>
+    </view>
+  </view>
+</view>

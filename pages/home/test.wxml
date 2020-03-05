@@ -1,0 +1,21 @@
+<scroll-view scroll-x="true" class="weui-navbar">
+  <block wx:for-items="{{tabs}}">
+    <view id="{{index}}" class="{{activeIndex == index ?'item_on':''}} default-item" bindtap="tabClick" style="width:{{tabW}}px">
+      {{item}}
+    </view>
+  </block>
+  <view class="weui-navbar-slider" style="transform:translateX({{slideOffset}}px);"></view>
+</scroll-view>
+
+<view class="rec" />
+
+<swiper current="{{activeIndex}}" class="swiper-box" duration="100" bindchange="bindChange">
+  <swiper-item >
+    <navigator class="pr" url="../productDetail/productDetail?productid={{item.productid}}" hover-class="changestyle" open-type='navigateTo' wx:for="{{productList}}">
+      <view class=" info ">
+        <view class="title ">{{item.name}}</view>
+      </view>
+    </navigator>
+    <view class="clear mt10 " bindtap="getMore ">点击查看更多</view>
+  </swiper-item>
+</swiper>

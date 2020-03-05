@@ -1,0 +1,90 @@
+<!--pages/home/home.wxml-->
+<wxs src="../../app.wxs" module="app" />
+
+<view class="home">
+  <view class="banner">
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" class="banner" duration="{{duration}}" circular="{{duration}}">
+      <block wx:for="{{banner_img}}" wx:key="{{index}}">
+        <swiper-item>
+          <image src="{{item.img}}" class="slide-image" mode="aspectFill" data-src='{{item.img}}' bindtap="previewImage" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="tabbar">
+    <view id='tab' class="{{menuFixed ? 'fixed': ''}}">
+      <!-- <view class="swiper-tab">
+      <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" data-otype="" bindtap="swichNav" >全部</view>
+      <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" data-otype="1" bindtap="swichNav">面膜</view>
+      <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" data-otype="2" bindtap="swichNav">眼影</view>
+      <view class="swiper-tab-list {{currentTab==3 ? 'on' : ''}}" data-current="3" data-otype="6" bindtap="swichNav">--</view>
+      <view class="swiper-tab-list {{currentTab==4 ? 'on' : ''}}" data-current="4" data-otype="7" bindtap="swichNav">--</view>
+      </view> -->
+      <scroll-view scroll-x="true" class="weui-navbar">
+        <block wx:for-items="{{tabs}}" wx:key="{{index}}">
+          <view id="{{item.id}}" class="{{activeIndex == item.id ?'item_on':''}} default-item" bindtap="tabClick" style="width:{{tabW}}px">
+            {{item.cname}}
+          </view>
+        </block>
+        <view class="weui-navbar-slider" style="transform:translateX({{slideOffset}}px);"></view>
+      </scroll-view>
+    </view>
+  </view>
+  <view class="c_t60"></view>
+  <view class="body">
+   
+    <view class="cont">
+      <loading hidden="{{hidden}}" id='loading'>
+        加载中...
+      </loading>
+      <view class="{{productList.length>1?'':'swiper'}}">
+        <view class=" pp" wx:if="{{productList==''}}">
+            <image class="kong" src="../../images/cart.jpg" mode="aspectFill" />
+        </view>
+        
+        <view wx:for="{{productList}}" wx:key="{{index}}" wx:for-item="item" style='position:relative'>
+
+          <navigator class="pr" url="../productDetail/productDetail?productid={{item.prodid}}&price1={{item.price1}}&price2={{item.price2}}&salesvolume={{item.salesvolume}}&stock={{item.stock}}&prodtitle={{item.prodtitle}}&imgurl1={{item.imgurl1}}&imgurl2={{item.imgurl2}}&imgurl3={{item.imgurl3}}&productList={{app.getProductList(item)}}" hover-class="changestyle"
+            open-type='navigateTo' wx:key="{{index}}">
+
+            <image class="photo" src="{{imgurl}}{{app.getTags(item.imgurl1)}}"></image>
+            <view class="info">
+              <view class="title">{{item.prodname}}{{item.prodmodel}}</view>
+              <view style="display:flex;line-height:50rpx;">
+                <view class="price" style='color:red;'>¥{{app.getPriceBig(item.price1)}}</view>
+                <view class="price" style=" font-size:22rpx;padding-top:4rpx;color: red;">.{{app.getPriceSmall(item.price1)}}</view>
+                <view class="price2" wx:if="{{item.price2 > 0}}">¥{{item.price2}}</view>
+              </view>
+              <view style="display:flex;line-height:50rpx;color:#999">
+                <view class="price" style="font-size:28rpx;width:30%">
+                  <text wx:if="{{item.is_recommend==1}}">推荐</text>
+                  <text wx:elif="{{item.is_hot==1}}">热销</text>
+                  <text wx:else>新品</text>
+                </view>
+                <view class="ku" style="width:60%">销量：{{item.salesvolume}}</view>
+              </view>
+            </view>
+
+
+          </navigator>
+          <image class="{{item.amount==0?'cart':'nocart'}}" src="../../images/cart2.png" bindtap='showstepper' data-index="{{index}}"></image>
+          <view class="{{item.amount==0?'stepper':'steppershow'}}">
+            <!-- 减号 -->
+            <text class="{{minusStatuses[index]}}" data-index="{{index}}" bindtap="bindMinus" data-cartid="{{item.productid}}">-</text>
+            <input type="number" bindchange="bindManual" value="{{item.amount}}" />
+
+            <!-- 加号 -->
+            <text class="normal" data-index="{{index}}" bindtap="bindPlus" data-cartid="{{item.productid}}">+</text>
+          </view>
+        </view>
+      </view>
+      <!-- <view class="clear mt10" bindtap="getMore"></view> -->
+        <view class="clear mt10" ></view>
+    </view>
+
+  </view>
+
+
+
+
+</view>

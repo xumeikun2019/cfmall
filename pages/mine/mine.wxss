@@ -1,0 +1,78 @@
+/* pages/mine/mine.wxss */
+
+.page {
+  height: 100vh;
+  background: #d9d9d9;
+}
+
+.home {
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  /* background-color: #ffffe0; */
+  align-items: center; /* 垂直居中 */
+  justify-content: center; /* 水平居中 */
+}
+
+.head {
+  width: 100vw;
+  height: 35vh;
+}
+
+.content {
+  margin-top: 5px;
+  width: 95vw;
+  height: 50vh;
+  background: #fff;
+  border-radius: 10px;
+}
+
+.foot {
+  margin-top: 5px;
+  width: 95vw;
+  height: 20vh;
+  background: #fff;
+  border-radius: 10px;
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+}
+
+.myorder {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #d9d9d9;
+  height: 40%;
+}
+
+.icon-postion {
+  width: 16px;
+  height: 16px;
+  margin: 10px 10px 10px 0px;
+}
+
+.cell {
+   display: flex;
+   flex-direction: row;
+  border-bottom: 1px solid #d9d9d9;
+  height: 50%
+}
+
+.cell_lable {
+  font-size: 15px;
+  margin: 15px 10px 10px 15px;
+}
+
+.cell_image {
+  width: 36px;
+  height: 36px;
+  margin: 10px;
+}
+.cell_image_postion{
+  width: 16px;
+  height: 16px;
+  margin: 16px 10px 10px 50%;
+
+}

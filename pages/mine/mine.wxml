@@ -1,0 +1,36 @@
+<!--pages/mine/mine.wxml-->
+
+<view class='page'>
+  <view class='home'>
+    <view class='head'>
+      <image class="photo" src="../../images/background.png"></image>
+
+
+    </view>
+    <view class='content'>
+      <view class='myorder'>
+        <view style='font-size:15px;margin:10px'>我的订单</view>
+        <view style='font-size:15px;margin:10px;margin-left:40vw;color:#d9d9d9'>查看全部订单</view>
+        <image src="../../images/arrow.png" class="icon-postion"></image>
+      </view>
+
+
+    </view>
+    <view class='foot'>
+      <view class='cell'>
+       <image src="../../images/call.png" class="cell_image"></image>
+        <view class='cell_lable'>
+          联系客服</view>
+           <image src="../../images/arrow.png" class="cell_image_postion"></image>
+      </view>
+
+
+      <view class='cell'>
+      <image src="../../images/question.png" class="cell_image"></image>
+        <view class='cell_lable'>
+          常见问题</view>
+           <image src="../../images/arrow.png" class="cell_image_postion"></image>
+      </view>
+    </view>
+  </view>
+</view>

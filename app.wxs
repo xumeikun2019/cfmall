@@ -1,0 +1,27 @@
+var getTags = function (tag) {
+  var a = tag.split(",");
+  //console.log(a[0]);
+  return a[0];
+  
+}
+var getPriceBig = function(price) {
+  
+  var a = price.split(".");
+  return a[0];
+}
+var getPriceSmall = function (price) {
+
+  var a = price.split(".");
+  return a[1];
+}
+var getProductList = function(item){
+  var jsonItem = JSON.stringify(item);
+  return jsonItem;
+}
+
+module.exports = {
+  getTags: getTags,
+  getPriceSmall: getPriceSmall,
+  getPriceBig: getPriceBig,
+  getProductList: getProductList
+}
